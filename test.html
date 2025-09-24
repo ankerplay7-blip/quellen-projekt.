@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quellen</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .section {
+    width: 95%;
+    max-width: 500px;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 16px;
+    color: #222;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Нежные пастельные цвета как "листочки" */
+  .color1 { background-color: #fde2e4; } /* нежно-розовый */
+  .color2 { background-color: #e2f0f9; } /* нежно-голубой */
+  .color3 { background-color: #e5f9e0; } /* нежно-зелёный */
+  .color4 { background-color: #fff1d6; } /* нежно-жёлтый */
+
+  .section h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #34495e;
+  }
+
+  .link-card {
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 12px;
+    background-color: rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, background 0.15s ease;
+  }
+
+  .link-card::after {
+    content: " →";
+    font-weight: bold;
+  }
+
+  .link-card:hover {
+    background-color: rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .link-card:active {
+    transform: scale(0.97);
+  }
+
+  @media (max-width: 400px){
+    h1 { font-size: 22px; }
+    .section h2 { font-size: 18px; }
+    .link-card { font-size: 15px; padding: 10px; }
+  }
+</style>
+</head>
+<body>
+<h1>Quellen</h1>
+
+<div class="section color1">
+  <h2>1. Beschreibung der Krankheit</h2>
+  <a href="https://www.rki.de/EN/Home/home_node.html" class="link-card" target="_blank">Robert Koch-Institut</a>
+  <a href="https://www.who.int/ru" class="link-card" target="_blank">WHO (World Health Organization)</a>
+  <a href="https://www.bundesgesundheitsministerium.de/en/" class="link-card" target="_blank">Bundesministerium für Gesundheit (Deutschland)</a>
+</div>
+
+<div class="section color2">
+  <h2>2. Beschreibung des Ablaufs der Impfung</h2>
+  <a href="https://www.netdoktor.de/impfungen/grippeimpfung/" class="link-card" target="_blank">
+    NetDoktor – Grippeimpfung
+  </a>
+  <a href="https://www.impfen-info.de/impfungen/impfungen-im-ueberblick/grippeimpfung.html" class="link-card" target="_blank">
+    Impfen-info.de – Grippeimpfung
+  </a>
+</div>
+
+<div class="section color3">
+  <h2>3. Mögliche Nebenwirkungen der Impfung</h2>
+  <a href="https://www.rki.de/DE/Content/Infekt/Impfen/Influenza/FAQ/FAQ_node.html" class="link-card" target="_blank">
+    Robert Koch-Institut (RKI)
+  </a>
+  <a href="https://www.pei.de/DE/medizinprodukte/impfstoffe/impfstoffsicherheit/impfstoffsicherheit-node.html" class="link-card" target="_blank">
+    Paul-Ehrlich-Institut (PEI)
+  </a>
+  <a href="https://www.impfen-info.de/impfungen/impfungen-im-ueberblick/grippeimpfung.html" class="link-card" target="_blank">
+    BZgA – Grippeimpfung
+  </a>
+</div>
+
+<div class="section color4">
+  <h2>4. Pro-und Contra der Impfung</h2>
+  <a href="#" class="link-card">Quelle 1</a>
+  <a href="#" class="link-card">Quelle 2</a>
+  <a href="#" class="link-card">Quelle 3</a>
+</div>
+
+<script>
+  // Плавное появление и уход при скролле
+  const sections = document.querySelectorAll('.section');
+  function checkSections() {
+    const windowHeight = window.innerHeight;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if(rect.top < windowHeight * 0.85 && rect.bottom > 0) {
+        section.classList.add('visible');
+      } else {
+        section.classList.remove('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkSections);
+  window.addEventListener('load', checkSections);
+</script>
+</body>
+</html>
